@@ -1,0 +1,36 @@
+instalação tipagem react no Vite
+npm install --save-dev @types/react@latest @types/react-dom@latest
+
+instalação styled components
+npm i styled-components
+
+instalação tipagem
+npm i @types/styled-components -D
+
+O que ele resolve: 
+Digamos que temos um componente <Button /> e ele vai ter uma variedade de cores dependendo da situação
+  - Primary, Secondary, Danger, Succes, neutral...
+
+Queremos escolher a cor dos botões por propriedade, sem styled components, e com css.modules seria assim: 
+App.tsx
+export function App() {
+  return (
+    <Button color="primary" />
+    <Button color="secondary" />
+    <Button color="danger" />
+    <Button color="success" />
+  )
+}
+
+Button.tsx
+interface ButtonProps {
+  color: 'primary' | 'secondary' | 'danger' | 'success';
+}
+export function Button({ color = 'primary' }: ButtonProps) {
+  return <button className={`${styles.button} ${styles[color]}`}>Enviar</button>
+}
+
+Agora com styled-components: 
+
+
+
