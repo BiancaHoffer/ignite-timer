@@ -1,13 +1,7 @@
 import { differenceInSeconds } from "date-fns";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { CyclesContext } from "../../../../context/CyclesContext";
 import { CountDownContainer, Separator } from "./styles";
-
-interface CountDownProps {
-  activeCycle: any;
-  setCycles: any;
-  activeCycleId: any;
-}
 
 export function CountDown() {
   const { 
@@ -40,7 +34,7 @@ export function CountDown() {
           markCurrentCycleAsFinished()
 
           setSecondsPassed(0);
-          clearInterval(interval);
+          clearInterval(0);
         } else {
           setSecondsPassed(secondsDifference);
         }
