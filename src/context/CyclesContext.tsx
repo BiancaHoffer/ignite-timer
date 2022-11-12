@@ -2,8 +2,6 @@ import { createContext, ReactNode, useEffect, useReducer, useState } from "react
 import { addNewCycleAction, interruptCycleAction, markFinishedAction } from "../reducers/cycles/action";
 import { Cycle, cyclesReducer } from "../reducers/cycles/reducer";
 
-
-
 interface CreateCycleData {
   task: string;
   minutesAmount: number;
