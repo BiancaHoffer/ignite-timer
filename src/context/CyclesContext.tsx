@@ -1,3 +1,4 @@
+import { differenceInSeconds } from "date-fns/esm";
 import { createContext, ReactNode, useEffect, useReducer, useState } from "react";
 import { addNewCycleAction, interruptCycleAction, markFinishedAction } from "../reducers/cycles/action";
 import { Cycle, cyclesReducer } from "../reducers/cycles/reducer";
@@ -42,7 +43,12 @@ export function CyclesProvider({ children }: ChildrenProps) {
   //const [activeCycleId, setActiveCycleId] = useState<string | null>(null);
 
   const { cycles, activeCycleId } = cyclesState;
-  const [amountSecondsPassed, setAmountSecondsPassed] = useState(0);
+  const [amountSecondsPassed, setAmountSecondsPassed] = useState(() => {
+    if (activeCycle) {
+      return differenceInSeconds(new Date(), new Date(activeCycle.startDate));
+    }
+     return 0;
+  });
   // essa váriável vai percorrer o cyclo até encontrar um cyclo igual ao cyclo ativo
   const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId);
 

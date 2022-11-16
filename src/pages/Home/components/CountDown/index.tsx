@@ -34,8 +34,7 @@ export function CountDown() {
         )
         
         if (secondsDifference >= totalSeconds) {
-          markCurrentCycleAsFinished()
-
+          markCurrentCycleAsFinished();
           setSecondsPassed(0);
           clearInterval(0);
         } else {
